@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const TMDB_API_KEY = 'ada8572dee53fb8cf20d9bcf0affdd0b';
 
     // NEW: Add your backend API URL here
-    const BASE_API_URL = 'http://tgrobin:3000/api/content';
+    const BASE_API_URL = 'http://tgrobinnews:3000/api/content';
     // --- Admin Login Elements ---
     const adminLoginSection = document.getElementById('admin-login-section');
     const adminLoginForm = document.getElementById('admin-login-form');
