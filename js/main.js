@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSearchTerm = ''; // To store the last search term
 
     // NEW: Add your backend API URL here
-    const BASE_API_URL = 'http://65.2.175.194:3000/api/content';
+    const BASE_API_URL = 'http://tgrobin.news:3000/api/content';
 
     /**
      * Creates a modular movie/series card HTML element.
