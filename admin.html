@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Netflix Clone</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="admin-login-section">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" required>
+                <button type="submit">Login</button>
+                <p id="login-error-message" class="error-message"></p>
+            </form>
+        </section>
+
+        <div id="admin-content-wrapper">
+            <section id="add-content">
+                <h2>Add New Content</h2>
+
+                <div class="input-mode-selector">
+                    <button id="show-tmdb-input" class="active">Add via TMDB</button>
+                    <button id="show-manual-input">Add Manually</button>
+                </div>
+
+                <div id="tmdb-input-section" class="input-form-section active">
+                    <form id="tmdb-form">
+                        <label for="tmdb-id">TMDB Movie/TV Show ID:</label>
+                        <input type="text" id="tmdb-id" placeholder="e.g., 550 (Fight Club), 1399 (Game of Thrones)" required>
+                        <label for="content-type">Content Type:</label>
+                        <select id="content-type" required>
+                            <option value="movie">Movie</option>
+                            <option value="tv">TV Show</option>
+                        </select>
+                        <button type="submit">Fetch TMDB Data</button>
+                    </form>
+                </div>
+
+                <div id="manual-input-section" class="input-form-section" style="display: none;">
+                    <form id="manual-form">
+                        <label for="manual-content-title">Title:</label>
+                        <input type="text" id="manual-content-title" placeholder="e.g., My Custom Movie" required>
+
+                        <label for="manual-content-type">Content Type:</label>
+                        <select id="manual-content-type" required>
+                            <option value="movie">Movie</option>
+                            <option value="tv">TV Show</option>
+                        </select>
+
+                        <label for="manual-poster-url">Poster Image URL:</label>
+                        <input type="url" id="manual-poster-url" placeholder="e.g., https://example.com/poster.jpg">
+
+                        <label for="manual-backdrop-url">Backdrop Image URL (Optional):</label>
+                        <input type="url" id="manual-backdrop-url" placeholder="e.g., https://example.com/backdrop.jpg">
+
+                        <label for="manual-overview">Overview:</label>
+                        <textarea id="manual-overview" placeholder="A brief description of the content..." rows="4"></textarea>
+
+                        <label for="manual-video-url" id="manual-movie-video-label">Video URL (M3U8):</label>
+                        <input type="url" id="manual-video-url" placeholder="e.g., https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8">
+
+                        <div id="manual-episodes-input-section" style="display: none;">
+                            <h4>Seasons & Episodes (for TV Shows)</h4>
+                            <p>Manually add episodes and their M3U8 links.</p>
+                            <div id="manual-episodes-container">
+                                </div>
+                            <button type="button" id="add-manual-episode-button">Add Episode</button>
+                        </div>
+
+                        <button type="submit" id="add-manual-content-button">Add Manually to Library</button>
+                    </form>
+                </div>
+
+                <div id="tmdb-details" style="display: none;">
+                    <h3>Content Preview:</h3>
+                    <img id="tmdb-poster" src="" alt="Poster" style="max-width: 150px;">
+                    <h4 id="tmdb-title"></h4>
+                    <p id="tmdb-overview"></p>
+                    <div id="tmdb-episodes" style="display: none;">
+                        <h4>Seasons and Episodes (for TV Shows)</h4>
+                        <p>Enter M3U8 links for each episode.</p>
+                        </div>
+                    <label for="m3u8-link" id="movie-m3u8-label">M3U8 Link (for Movie):</label>
+                    <input type="text" id="m3u8-link" placeholder="Enter M3U8 URL for movie">
+                    <button id="add-to-library">Add to Library</button>
+                </div>
+            </section>
+
+            <section id="manage-content">
+                <h2>Manage Existing Content</h2>
+                <ul id="content-list">
+                    <li>No content added yet.</li>
+                </ul>
+            </section>
+        </div> </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

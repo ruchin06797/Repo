@@ -1,0 +1,333 @@
+/* Variables for consistency */
+:root {
+    --netflix-red: #e50914;
+    --dark-bg: #141414;
+    --card-bg: #222;
+    --text-color: #fff;
+    --light-grey: #aaa;
+    --button-bg: #333;
+    --button-hover-bg: #444;
+    /* Added missing variables for search input if they were defined elsewhere */
+    --border-color: #555; /* Example value, adjust if needed */
+    --input-bg: #333; /* Example value, adjust if needed */
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+header {
+    background-color: #000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Space out logo and search */
+    align-items: center;
+    border-bottom: 1px solid #333;
+    position: sticky; /* Keep header visible */
+    top: 0;
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the anchor tag wrapping the logo */
+.logo-link {
+    text-decoration: none; /* Removes the underline from the link */
+    color: inherit;      /* Ensures the link inherits text color, so the logo color remains red */
+}
+
+.logo {
+    color: var(--netflix-red);
+    font-size: 2.2em;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+/* --- Search Container Styles --- */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    width: 200px; /* Adjust as needed */
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#search-input::placeholder {
+    color: var(--light-grey);
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--netflix-red);
+    width: 250px; /* Expand on focus */
+    background-color: #444;
+}
+
+#search-button {
+    padding: 8px 15px;
+    background-color: var(--netflix-red);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #ff2a36; /* Slightly lighter red */
+}
+/* --- End Search Container Styles --- */
+
+
+main {
+    padding: 20px;
+    padding-bottom: 80px; /* Make space for fixed bottom nav */
+}
+
+.content-section {
+    display: none; /* Hidden by default, activated by JS */
+}
+
+.content-section.active {
+    display: block; /* Show active section */
+}
+
+h2 {
+    color: var(--netflix-red);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    text-align: left;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-content: center; /* Center items in grid */
+    padding: 10px 0;
+}
+
+.movie-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards are same height if content varies */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.movie-card-thumbnail {
+    width: 100%;
+    height: 220px; /* Fixed height for thumbnails */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    display: block;
+}
+
+.movie-card-info {
+    padding: 10px;
+    flex-grow: 1; /* Allow info section to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-card-title {
+    font-size: 1.1em;
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+    white-space: nowrap; /* Prevent title from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
+
+.movie-card-type {
+    font-size: 0.85em;
+    color: var(--light-grey);
+    margin: 0;
+}
+
+.loading-message {
+    color: var(--light-grey);
+    text-align: center;
+    grid-column: 1 / -1; /* Span across all columns */
+    padding: 20px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: var(--light-grey);
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-button .icon {
+    font-size: 1.5em;
+}
+
+.nav-button.active {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    color: var(--text-color);
+}
+
+/* My Nt Flix Info Section (Existing) */
+.info-panel {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+}
+
+.info-panel p {
+    margin-bottom: 10px;
+    color: var(--light-grey);
+}
+
+.info-panel ul {
+    list-style: disc inside;
+    margin-top: 10px;
+    padding-left: 20px;
+    color: var(--light-grey);
+}
+
+.info-panel ul li {
+    margin-bottom: 5px;
+}
+
+.info-panel a {
+    color: var(--netflix-red);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-panel a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .search-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #search-input {
+        width: calc(100% - 70px); /* Adjust width for smaller screens */
+    }
+
+    #search-input:focus {
+        width: calc(100% - 70px); /* Keep same width on focus for small screens */
+    }
+
+    .content-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .movie-card-thumbnail {
+        height: 180px;
+    }
+
+    .movie-card-title {
+        font-size: 1em;
+    }
+
+    .movie-card-type {
+        font-size: 0.85em;
+    }
+
+    .nav-button {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+
+    .nav-button .icon {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 15px;
+    }
+
+    .content-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .movie-card-thumbnail {
+        height: 150px;
+    }
+
+    .movie-card-title {
+        font-size: 0.9em;
+    }
+
+    .movie-card-type {
+        font-size: 0.75em;
+    }
+}

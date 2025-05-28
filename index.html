@@ -1,16 +1,83 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nt flix</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-  Hello world
-  <script src="script.js"></script>
-</body>
+    <header>
+        <a class="logo-link"> <h1 class="logo">NT FLIX</h1>
+        </a>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search movies or series...">
+            <button id="search-button">Search</button>
+        </div>
+    </header>
 
+    <main>
+        <section id="home-section" class="content-section active">
+            <h2>Popular Titles</h2>
+            <div id="mixed-content-grid" class="content-grid">
+                <p class="loading-message">Loading content...</p>
+            </div>
+        </section>
+
+        <section id="movies-section" class="content-section">
+            <h2>Movies</h2>
+            <div id="movies-grid" class="content-grid">
+                <p class="loading-message">Loading movies...</p>
+            </div>
+        </section>
+
+        <section id="webseries-section" class="content-section">
+            <h2>Web Series</h2>
+            <div id="webseries-grid" class="content-grid">
+                <p class="loading-message">Loading web series...</p>
+            </div>
+        </section>
+
+        <section id="search-results-section" class="content-section">
+            <h2>Search Results</h2>
+            <div id="search-results-grid" class="content-grid">
+                <p class="loading-message">Enter a search term above.</p>
+            </div>
+        </section>
+
+        <section id="my-ntflix-section" class="content-section">
+            <h2>Nt Flix </h2>
+            <div class="info-panel">
+                <p>Welcome to your personal Nt flix experience!</p>
+                <p>This is a simulated " Nt flix" section. In a real application, this would display:</p>
+                <ul>
+                    <li>you can watch live event</li>
+                    <li>Personalized recommendations</li>
+                    <li>Your favourite content</li>
+                    <li> best webseries</li>
+                </ul>
+                <p>Enjoy exploring the movies and series added</p>
+                <p style="text-align: center; margin-top: 30px;">
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-button active" data-section="home-section">
+            <span class="icon">🏠</span> Home
+        </button>
+        <button class="nav-button" data-section="movies-section">
+            <span class="icon">🎬</span> Movies
+        </button>
+        <button class="nav-button" data-section="webseries-section">
+            <span class="icon">📺</span> Web Series
+        </button>
+        <button class="nav-button" data-section="my-ntflix-section">
+            <span class="icon">👤</span> My Nt Flix
+        </button>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
 </html>

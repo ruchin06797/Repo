@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Info - Nt flix</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">NT FLIX</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main class="content-info-page">
+        <p id="loading-message">Loading content details...</p>
+
+        <div id="not-found-message" class="error-message" style="display: none;"></div>
+
+        <div class="content-display-area" style="display: none;">
+            <div class="media-container">
+                <div class="backdrop-fallback"></div>
+                <img id="content-backdrop" src="" alt="Backdrop" class="content-backdrop-image" style="display: none;">
+                <div class="overlay"></div>
+                <div class="poster-and-title">
+                    <div class="poster-container">
+                        <img id="content-poster" src="" alt="Poster" class="content-poster-image" style="display: none;">
+                    </div>
+                    <div class="title-container">
+                        <h2 id="content-title" style="display: none;"></h2>
+                    </div>
+                </div>
+            </div>
+
+            <section class="details-section">
+                <h3>Overview</h3>
+                <p id="content-overview" style="display: none;"></p>
+
+                <h3>Details</h3>
+                <div id="content-details" class="content-details-panel" style="display: none;"></div>
+
+                <div id="watch-buttons-container" style="margin-top: 30px;"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/info.js"></script>
+</body>
+</html>
